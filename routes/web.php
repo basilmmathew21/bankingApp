@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AccountsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +19,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+Route::get('/accounts',[App\Http\Controllers\AccountsController::class, 'index'])
+        ->name('accounts.index');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

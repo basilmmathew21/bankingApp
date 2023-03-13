@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Models\User;
-use Models\UserAccountTransactions;
-use Models\UserAccountLoan;
-use Models\UserAccountLoanTransactions;
+use App\Models\User;
+use App\Models\UserAccountTransactions;
+use App\Models\UserAccountLoan;
+use App\Models\UserAccountLoanTransactions;
 
 class UserAccounts extends Model
 {
