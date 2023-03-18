@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+
+
 use App\Models\User;
 class AccountsController extends Controller
 {
@@ -32,6 +36,11 @@ class AccountsController extends Controller
             $profile_image_path = $request->file('image')->store('public/images/profile');
             $profile_image_path = str_replace("public/", "", $profile_image_path);
            $data['image'] =  $profile_image_path;
+           
+           if(File::exists('storage/'.$user->image)){
+            File::delete('storage/'.$user->image);
+           } 
+
         } else {
             $data['image'] =  $user->image;
         }
