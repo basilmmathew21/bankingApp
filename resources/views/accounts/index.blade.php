@@ -14,8 +14,11 @@
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
                   
-                   <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Profile Image" class="rounded-circle" width="150">
-                   
+                  @if($user->image == '')
+                  <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Profile Image" class="rounded-circle" width="150">
+                    @else
+                    <img src="<?php echo asset('storage/'.$user->image); ?>" alt="Profile Image" class="rounded-circle" width="150">
+                  @endif 
                     
                     <div class="mt-3">
                       <h4>{{$user->name}}</h4>
@@ -30,93 +33,29 @@
               <div class="card mb-3">
                 <div class="card-body">
                   <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Full Name</h6>
+                    <div class="col-sm-2">
+                      Full Name
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                      
-                    </div>
-                  </div>
-                  <hr>
-				  
-				   <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Gender</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      </div>
-                  </div>
-                  <hr>
-				  
-				  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Dob</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-6 text-secondary">
+                    {{$user->name}}
                     </div>
                   </div>
                   <hr>
-				  
+	
                   <div class="row">
-                    <div class="col-sm-6">
-                      <h6 class="mb-0">Email : {{@$user->email}}</h6>
+                    <div class="col-sm-2">
+                      Email
                     </div>
-                    <div class="col-sm-9 text-secondary">
-					</div>
+                    <div class="col-sm-6 text-secondary">
+                      {{@$user->email}}
+					        </div>
                   </div>
 				  
-				 <hr>
-				  
-					  
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Phone</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                    </div>
-                  </div>
-                  <hr>
-				  
-					  
-          <div class="row">
-            <div class="col-sm-3">
-              <h6 class="mb-0">Whatsapp Number</h6>
-            </div>
-            <div class="col-sm-9 text-secondary">
-            </div>
-          </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Nationality</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-					</div>
-                  </div>
-                  <hr>
-                  
-                  
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Address</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                    </div>
-                  </div>
-				  <hr>
-				  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">State</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                    </div>
-                  </div>
-				  <hr>
-				  
-                  <div class="row">
+				    <hr>
+				        <div class="row">
                     <div class="col-sm-12">
                       <a class="btn btn-primary" 
-                      href="" title="Edit">Edit</a>
+                      href="{{ route('accounts.edit', $user->id) }}" title="Edit">Edit</a>
                     </div>
                   </div>
                 </div>

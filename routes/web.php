@@ -23,4 +23,11 @@ Auth::routes();
 Route::get('/accounts',[App\Http\Controllers\AccountsController::class, 'index'])
         ->name('accounts.index');
 
+
+Route::get('/{account}/edit', [App\Http\Controllers\AccountsController::class, 'edit'])
+        ->name('accounts.edit');
+
+Route::put('accounts/{account}', [App\Http\Controllers\AccountsController::class, 'update'])
+        ->name('accounts.update');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
