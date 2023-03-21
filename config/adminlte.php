@@ -299,8 +299,18 @@ return [
         [
             'text' => 'Profile',
             'route'  => 'accounts.index',
-            'icon'    => 'fa fa-check',
+            'icon'    => 'fa fa-address-card',
         ],
+        [
+            'text' => 'Accounts',
+            'route'  => 'accounts.dashboard',
+            'icon'    => 'fa fa-file-invoice',
+        ],
+        [
+            'text' => 'Loans',
+            'route'  => 'loans.dashboard',
+            'icon'    => 'fa fa-thin fa-landmark',
+        ]
     ],
 
     /*

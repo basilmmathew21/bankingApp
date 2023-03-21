@@ -6,13 +6,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
 
 use App\Models\User;
+use App\Models\UserAccounts;
+use App\Models\UserAccountTransactions;
 class AccountsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request)
     {
         $user = User::with(['account']);
@@ -84,6 +90,45 @@ class AccountsController extends Controller
 
         $data = $request->validate($rules);
         return $data;
+    }
+
+    public function dashboard()
+    {
+        $user   = User::with(['account']);
+        $dbInfo = $user->where('id',Auth::user()->id)->first();
+        
+        $accountDb   = UserAccounts::with(['transactions','loans']);
+        $accountInfo = $accountDb->where('user_id',Auth::user()->id)
+                                 ->first();
+
+        if(!empty($accountInfo)){
+            $accountInfo  = $accountInfo->toArray();
+        }
+       
+        return view('accounts.dashboard',compact('dbInfo','accountInfo'));
+    }
+
+    public function credits()
+    {
+        $user   = User::with(['account']);
+        $dbInfo = $user->where('id',Auth::user()->id)->first();
+        
+        $accountDb   = UserAccounts::with(['transactions','loans']);
+        $accountInfo = $accountDb->where('user_id',Auth::user()->id)
+                                 ->first()->toArray();
+
+        return view('accounts.credits',compact('dbInfo','accountInfo'));
+    }
+
+    public function debits()
+    {
+        $user   = User::with(['account']);
+        $dbInfo = $user->where('id',Auth::user()->id)->first();
+        
+        $accountDb   = UserAccounts::with(['transactions','loans']);
+        $accountInfo = $accountDb->where('user_id',Auth::user()->id)
+                                 ->first()->toArray();
+        return view('accounts.debits',compact('dbInfo','accountInfo'));
     }
 
     

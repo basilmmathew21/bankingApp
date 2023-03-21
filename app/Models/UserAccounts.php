@@ -25,16 +25,17 @@ class UserAccounts extends Model
     
     public function transactions()
     {
-        return $this->hasMany(UserAccountTransactions::class);
+        return $this->hasMany(UserAccountTransactions::class,'user_account_id');
     }
 
     public function loans()
     {
-        return $this->hasMany(UserAccountLoan::class);
+        return $this->hasMany(UserAccountLoan::class,'user_account_id');
     }
 
     public function loanTransactions()
     {
-        return $this->hasMany(UserAccountLoanTransactions::class);
+        return $this->hasManyThrough('App\Models\UserAccountLoanTransactions','App\Models\UserAccountLoan','user_account_id','user_account_loan_id');
     }
+
 }

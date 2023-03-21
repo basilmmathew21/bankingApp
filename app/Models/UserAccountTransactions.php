@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Models\UserAccounts;
+use App\Models\UserAccounts;
 
 class UserAccountTransactions extends Model
 {
     use HasFactory;
+
+    protected $table = 'user_account_transaction';
 
     protected $fillable = [
         'user_account_id',
@@ -21,5 +23,4 @@ class UserAccountTransactions extends Model
         return $this->belongsTo(UserAccounts::class);
     }
 
-   
 }

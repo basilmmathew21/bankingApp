@@ -31,3 +31,18 @@ Route::put('accounts/{account}', [App\Http\Controllers\AccountsController::class
         ->name('accounts.update');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/accounts/dashboard',[App\Http\Controllers\AccountsController::class, 'dashboard'])
+        ->name('accounts.dashboard');
+
+Route::get('/accounts/credits',[App\Http\Controllers\AccountsController::class, 'credits'])
+        ->name('accounts.credits');
+
+Route::get('/accounts/debits',[App\Http\Controllers\AccountsController::class, 'debits'])
+        ->name('accounts.debits');    
+        
+Route::get('/loans/dashboard',[App\Http\Controllers\LoansController::class, 'dashboard'])
+        ->name('loans.dashboard');        
+
+Route::get('/loans/payments',[App\Http\Controllers\LoansController::class, 'payments'])
+        ->name('loans.payments');        

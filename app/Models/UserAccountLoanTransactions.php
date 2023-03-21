@@ -11,6 +11,7 @@ class UserAccountLoanTransactions extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
         'user_account_id',
         'user_account_loan_id',
